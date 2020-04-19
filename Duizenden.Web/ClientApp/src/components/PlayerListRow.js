@@ -1,5 +1,9 @@
-﻿import { Component } from "react";
+﻿import React, { Component } from "react";
 
-export class PlayerRow extends Component {
-
+export class PlayerListRow extends Component {
+    render() {
+        return (
+            <strong>Name</strong>
+        );
+    }
 }
