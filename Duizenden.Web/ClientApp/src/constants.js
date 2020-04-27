@@ -1,0 +1,1 @@
+﻿export const WEBAPI_ROOT_URL = 'https://localhost:44327';
