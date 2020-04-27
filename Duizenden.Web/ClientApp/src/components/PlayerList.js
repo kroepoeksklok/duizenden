@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import * as signalR from "@microsoft/signalr";
 import { PlayerListRow } from './PlayerListRow';
+import * as constants from '../constants';
 
 export class PlayerList extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export class PlayerList extends Component {
     componentDidMount() {
         this.connection = new signalR
             .HubConnectionBuilder()
-            .withUrl("https://localhost:44327/playerHub")
+            .withUrl(`${constants.WEBAPI_ROOT_URL}/playerHub`)
             .build();
 
         this.connection.on("PlayerJoined", function (playerJoinedMessage) {
