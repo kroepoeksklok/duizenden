@@ -38,9 +38,7 @@ export class PlayerList extends Component {
                 <div>Players</div>
                 <ul>
                     {this.state.players.map((player, index) => (
-                        <li>
-                            <PlayerListRow key={index} item={player} />
-                        </li>
+                        <PlayerListRow key={index} item={player} />
                     ))}
                 </ul>
             </div>

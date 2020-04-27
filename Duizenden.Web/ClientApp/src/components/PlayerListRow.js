@@ -3,7 +3,7 @@
 export class PlayerListRow extends Component {
     render() {
         return (
-            <strong>Name</strong>
+            <li><strong>Name</strong></li>
         );
     }
 }
