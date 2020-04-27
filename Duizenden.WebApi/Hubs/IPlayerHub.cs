@@ -2,6 +2,6 @@
 
 namespace Duizenden.WebApi.Hubs {
     public interface IPlayerHub {
-        Task PlayerJoined(string playerJoinedMessage);
+        Task PlayerJoined(string playerName);
     }
 }

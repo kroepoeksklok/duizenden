@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Duizenden.WebApi.Dto;
 using Duizenden.WebApi.Hubs;
 using Duizenden.WebApi.Logic;
@@ -19,7 +18,7 @@ namespace Duizenden.WebApi.Controllers {
         [HttpPost]
         public async Task<Player> Post(JoinData joinData) {
             var joinedPlayer = Game.Instance.Join(joinData.PlayerName);
-            await _playerHubContext.Clients.All.PlayerJoined($"{joinData.PlayerName} has joined the game");
+            await _playerHubContext.Clients.All.PlayerJoined(joinData.PlayerName);
             return joinedPlayer;
         }
     }

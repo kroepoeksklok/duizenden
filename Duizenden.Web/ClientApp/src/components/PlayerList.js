@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import * as signalR from "@microsoft/signalr";
-import { PlayerListRow } from './PlayerListRow';
+import PlayerListRow from './PlayerListRow';
 import * as constants from '../constants';
 
 export class PlayerList extends Component {
@@ -14,16 +14,20 @@ export class PlayerList extends Component {
     }
 
     componentDidMount() {
-        this.connection = new signalR
+        var self = this;
+
+        self.connection = new signalR
             .HubConnectionBuilder()
             .withUrl(`${constants.WEBAPI_ROOT_URL}/playerHub`)
             .build();
 
-        this.connection.on("PlayerJoined", function (playerJoinedMessage) {
-            console.log('playerJoinedMessage: ', playerJoinedMessage);
+        self.connection.on("PlayerJoined", function (playerThatJoined) {
+            self.setState(prevState => ({
+                players: [...prevState.players, playerThatJoined]
+            }));
         });
 
-        this.connection
+        self.connection
             .start()
             .then(() => console.info('SignalR Connected'))
             .catch(err => console.error('SignalR Connection Error: ', err));
@@ -39,7 +43,7 @@ export class PlayerList extends Component {
                 <div>Players</div>
                 <ul>
                     {this.state.players.map((player, index) => (
-                        <PlayerListRow key={index} item={player} />
+                        <PlayerListRow key={index} name={player} />
                     ))}
                 </ul>
             </div>
