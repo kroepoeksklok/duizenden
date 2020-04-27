@@ -1,9 +1,7 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 
-export class PlayerListRow extends Component {
-    render() {
-        return (
-            <li><strong>Name</strong></li>
-        );
-    }
-}
+const PlayerListRow = (props) => (
+    <li><strong>{props.name}</strong></li>        
+)
+
+export default PlayerListRow;
